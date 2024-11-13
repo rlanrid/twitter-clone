@@ -1,11 +1,11 @@
 # React를 이용해 Twitter clone사이트 만들기   
 
 ## 🔧초기세팅   
-**Frontend**
+**Frontend**   
 `npm i vite@latest .`   
 ``
 
-**Backend**
+**Backend**   
 `npm i express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary`   
 `npm i -D nodemon`   
 
