@@ -9,6 +9,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use(express.json()); // req.body를 파싱하기위해서 사용
+
 app.use("/api/auth", authRoutes);
 
 app.listen(8000, () => {
