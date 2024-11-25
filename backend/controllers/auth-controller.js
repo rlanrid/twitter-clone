@@ -61,6 +61,7 @@ export const signup = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -88,6 +89,7 @@ export const login = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export const logout = async (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 })
@@ -100,8 +102,10 @@ export const logout = async (req, res) => {
 
 export const getMe = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user._id).select("-password");
+    res.status(200).json(user);
   } catch (error) {
-
+    console.log("Error in getMe controller", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
