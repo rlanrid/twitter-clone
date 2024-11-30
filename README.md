@@ -3,7 +3,7 @@
 ## 🔧초기세팅   
 **Frontend**   
 `npm i vite@latest .`   
-``
+````
 
 **Backend**   
 `npm i express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary`   
