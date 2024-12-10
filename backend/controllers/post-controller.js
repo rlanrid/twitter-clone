@@ -101,12 +101,12 @@ export const likeUnlikePost = async (req, res) => {
     const userLikedPost = post.likes.includes(userId);
 
     if (userLikedPost) {
-      // Unlike Post
+      // 게시글 좋아요 취소
       await Post.updateOne({ _id: postId }, { $pull: { likes: userId } });
       await User.updateOne({ _id: userId }, { $pull: { likedPosts: postId } });
       res.status(200).json({ message: "Post unliked successfully" });
     } else {
-      // Like post
+      // 게시글 좋아요
       post.likes.push(userId);
       await User.updateOne({ _id: userId }, { $push: { likedPosts: postId } });
       await post.save();
@@ -155,7 +155,7 @@ export const getLikedPosts = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    const likedPosts = await Post.find({ _id: { $in: user.likedPosts } })
+    const likedPosts = await Post.find({ _id: { $in: user.likedPosts } }) // 사용자가 좋아요한 게시글을 찾기
       .populate({
         path: "user",
         select: "-password"
@@ -218,4 +218,4 @@ export const getUserPosts = async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
     console.log("Error in getUserPosts controller: ", error);
   }
-}
+};
