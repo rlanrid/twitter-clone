@@ -3,6 +3,7 @@
 ## 🔧초기세팅   
 **Frontend**   
 `npm i vite@latest .`   
+`npm i react-router-dom`
 ````
 
 **Backend**   
