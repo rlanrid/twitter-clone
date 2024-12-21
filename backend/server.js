@@ -21,7 +21,8 @@ cloudinary.config({
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json()); // req.body를 파싱하기위해서 사용
+app.use(express.json({ limit: "5mb" })); // req.body를 파싱하기위해서 사용
+// 한계는 DOS 방어를 위해 너무 높아서는 안됨
 app.use(express.urlencoded({ extended: true })); // form 데이터(urlencoded)를 파싱하기위해 사용
 
 app.use(cookieParser());

@@ -42,7 +42,7 @@ const LoginPage = () => {
       };
     },
     onSuccess: (data) => {
-      // refetch the authUser
+      // authUser 다시 가져오기
       queryClient.invalidateQueries({ queryKey: ["authUser"] })
     },
   });
