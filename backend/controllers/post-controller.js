@@ -104,7 +104,9 @@ export const likeUnlikePost = async (req, res) => {
       // 게시글 좋아요 취소
       await Post.updateOne({ _id: postId }, { $pull: { likes: userId } });
       await User.updateOne({ _id: userId }, { $pull: { likedPosts: postId } });
-      res.status(200).json({ message: "Post unliked successfully" });
+
+      const updateLikes = post.likes.filter((id) => id.toString() !== userId.toString());
+      res.status(200).json(updateLikes);
     } else {
       // 게시글 좋아요
       post.likes.push(userId);
@@ -118,7 +120,8 @@ export const likeUnlikePost = async (req, res) => {
       })
       await notification.save();
 
-      res.status(200).json({ message: "Post liked successfully" });
+      const updateLikes = post.likes
+      res.status(200).json(updateLikes);
     }
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
