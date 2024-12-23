@@ -98,6 +98,8 @@ const Post = ({ post }) => {
     onSuccess: (post, newComment) => {
       toast.success("Comment posted successfully")
       setComment("");
+
+      // 모든 게시글 리로드 대신 캐시를 바로 업데이트
       queryClient.invalidateQueries(["posts"], (oldData) => {
         return oldData.map((p) => {
           if (p._id === post._id) {
