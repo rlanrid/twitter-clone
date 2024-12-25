@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 
 export const protectRoute = async (req, res, next) => {
   try {
+    // 토큰 생성
     const token = req.cookies.jwt;
     if (!token) {
       return res.status(401).json({ error: "로그인이 필요합니다." });
