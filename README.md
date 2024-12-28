@@ -4,7 +4,6 @@
 **Frontend**   
 `npm i vite@latest .`   
 `npm i react-router-dom`
-````
 
 **Backend**   
 `npm i express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary`   
