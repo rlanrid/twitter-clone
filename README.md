@@ -210,8 +210,7 @@ MongoDB를 이용하여 게시글 및 코멘트 기능을 구현했습니다.
 
   - 문제 해결   
   QueryClientProvider로 감싸서 해결(client속성은 new QueryClient로 설정)
-</details>
-
+</details>   
 
 ## 📎사이트   
 데이터베이스 - [mongoDB](https://www.mongodb.com/ko-kr)   
